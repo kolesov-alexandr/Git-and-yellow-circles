@@ -1,17 +1,17 @@
 import sys
 import random
 
-from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QPainter, QColor
+from UI import *
 
 WINDOW_SIZE = (576, 461)
 
 
-class MyWidget(QMainWindow):
+class MyWidget(QMainWindow, Window):
     def __init__(self):
         super().__init__()
-        uic.loadUi("UI.ui", self)
+        self.setupUi(self)
         self.do_paint = False
         self.pushButton.clicked.connect(self.paint)
 
@@ -36,7 +36,7 @@ class MyWidget(QMainWindow):
         qp.drawEllipse(*coords, radius, radius)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = QApplication(sys.argv)
     ex = MyWidget()
     ex.show()
