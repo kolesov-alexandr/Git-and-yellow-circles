@@ -3,8 +3,7 @@ import random
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5.QtGui import QPainter
-from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPainter, QColor
 
 WINDOW_SIZE = (576, 461)
 
@@ -28,7 +27,8 @@ class MyWidget(QMainWindow):
             qp.end()
 
     def createCircle(self, qp):
-        qp.setBrush(Qt.yellow)
+        qp.setBrush(QColor(random.randrange(0, 256), random.randrange(0, 256), random.randrange(
+            0, 256)))
         coords = (random.randrange(10, WINDOW_SIZE[0] - 10 + 1), random.randrange(10, WINDOW_SIZE[
             1] - 10 + 1))
         radius = random.randrange(10, min(WINDOW_SIZE[0] - coords[0] + 1, coords[0] + 1,
